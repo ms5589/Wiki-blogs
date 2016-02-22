@@ -13,7 +13,7 @@ console.log(view);
         return;
       }
       res.writeHead(200, {"Content-Type":"text/html"});
-      res.end(view.render('blog/index', {equipment: equipment}));
+      res.end(view.render('blog/index', {blog: blog}));
     });
   },
 
@@ -36,8 +36,8 @@ console.log(view);
 
   destroy: function(req, res, params) {
     console.log(params.id);
-    db.run('DELETE FROM Post WHERE id=?', params.id);
-    equipment.index(req, res);
+    db.run('DELETE FROM Post WHERE postId=?', params.id);
+    blog.index(req, res);
   }
 }
 

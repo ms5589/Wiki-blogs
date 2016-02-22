@@ -5,7 +5,7 @@ var view = require('./view'),
 // This should have methods for all the RESTful actions
 var blog = {
   index: function(req, res) {
-console.log(view);
+  console.log(view);
     var blog = db.all('SELECT * FROM Post', function(err, blog){
       if(err) {
         res.writeHead(500, {"Content-Type":"text/html"});
@@ -22,6 +22,11 @@ console.log(view);
     res.end(view.render('blog/new'));
   },
 
+  load: function(req, res) {
+    res.writeHead(200, {"Content-Type":"text/html"});
+    res.end(view.render('blog/load'));
+  },
+
   create: function(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
@@ -36,7 +41,7 @@ console.log(view);
 
   destroy: function(req, res, params) {
     console.log(params.id);
-    db.run('DELETE FROM Post WHERE id=?', params.id);
+    db.run('DELETE FROM Post WHERE postId=?', params.id);
     blog.index(req, res);
   }
 }
