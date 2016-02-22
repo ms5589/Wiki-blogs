@@ -41,4 +41,4 @@ console.log(view);
   }
 }
 
-module.exports = exports = equipment;
+module.exports = exports = blog;

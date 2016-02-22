@@ -1,5 +1,5 @@
 var view = require('./view'),
-    db = require('../db');
+    db = require('./db');
 
 // A controller for the Blog resource
 // This should have methods for all the RESTful actions

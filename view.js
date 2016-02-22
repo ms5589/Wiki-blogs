@@ -14,8 +14,12 @@ function cacheDirectory(dir) {
   });
 }
 function cacheTemplates() {
-  var dirs = fs.readdirSync('templates');
+  var dirs = fs.readdirSync('templates/');
+  console.log(dirs);
+  //var dir = dirs[1];
   dirs.forEach(function(dir){
+    console.log(dir);
+    if(dir!= ".DS_Store")
     cacheDirectory(dir);
   });
 }
@@ -40,6 +44,7 @@ function render(template, params, layout) {
 }
 
 function build(template, params, content) {
+  console.log(template);
   return _templates[template].replace(/<%(.*?)%>/g, function(match, code){
     if(code.startsWith("=")) return eval(code.substr(1));
     eval(code);
