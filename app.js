@@ -12,5 +12,5 @@ router.addRoute('/blog', 'POST', blog.create);
 router.addResource('blog', require('./controllers/blog'));
 
 // Launching the server
-new http.Server(router.route).listen(10);
+new http.Server(router.route).listen(9090);
 console.log("Go to Browser");

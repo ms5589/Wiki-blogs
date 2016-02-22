@@ -13,13 +13,13 @@ console.log(view);
         return;
       }
       res.writeHead(200, {"Content-Type":"text/html"});
-      res.end(view.render('Blog/index', {blog: blog}));
+      res.end(view.render('blog/index', {blog: blog}));
     });
   },
 
   new: function(req, res) {
     res.writeHead(200, {"Content-Type":"text/html"});
-    res.end(view.render('Blog/new'));
+    res.end(view.render('blog/new'));
   },
 
   create: function(req, res) {
