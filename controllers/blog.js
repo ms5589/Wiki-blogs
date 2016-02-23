@@ -17,6 +17,11 @@ var blog = {
     });
   },
 
+  homepage: function(req, res){
+    res.writeHead(200, {"Content-Type":"text/html"});
+    res.end(view.render('/index'));
+  },
+  
   new: function(req, res) {
     res.writeHead(200, {"Content-Type":"text/html"});
     res.end(view.render('blog/new'));

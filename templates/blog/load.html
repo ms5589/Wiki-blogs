@@ -1,10 +1,44 @@
+ <html> 
+  <head>
+    <style type= "text/css">
+	  article{ color: yellow; font-size: 25px;}
+	  body{ background-color: black;}
+	  li{color: #ffcc00; font-size: 25px;}
+	  a{color: #ffcc00; font-size: 25px;}
+	  a:hover {color: red; font-size: 50px;}
+  	</style>
+  </head>
+
+<body>
+<div id="demo">
+<fieldset>
 <article>
 
 <% content.title = "Blog", params.id %>
 
-	<%=params.title %> </br>
+	<%=params.title %>: </br>
   	<%=params.body %> </br>
 
 </article>
+</fieldset>
+</div>
 
-<a href="/blog/new">Add Blog</a>
+<button type="button" onclick="loadComment()">Preview Comment</button>
+
+<script>
+function loadComment() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("demo").innerHTML = "lol";
+    }
+  };
+  xhttp.open("GET", "comments.html", true);
+  xhttp.send();
+}
+</script>
+</br>
+<a href="/blog/new">Add a new Blog</a></br>
+<a href="/blog/">List of Blogs</a>
+</body>
+</html>

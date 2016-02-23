@@ -1,18 +1,33 @@
-<form action="/blog" method="POST">
+<html>
+<head>
+<style type= "text/css">
+    h1{ color: yellow;}
+    body{ background-color: black;}
+    p{color: #ffcc00; font-size: 25px;}
+    a{color: #ffcc00; font-size: 25px;}
+    a:hover {color: red; font-size: 50px;}
+</style>
+</head>
+<body>
+  <% content.title = "Create a Blog" %>
+  <form action="/blog" method="POST">
   <p>
     <label for="title">Title:</label></br>
-    <input name="title" type="text" style="width: 100px; height: 40px;"/>
-  </p> </br>
+    <input name="title" type="text" style="width: 1000px; height: 40px;"/>
+  </p>
   <p>
     <label for="body">Write here:</label></br>
     <input name="blog" type="text" style="width: 1000px; height: 200px;"/>
-  </p> </br>
+  </p>
   <p>
     <label for="comment">Add Comments here:</label></br>
-    <input name="comment" type="text" style="width: 1000px; height: 60px;/></br>
+    <input name="comment" type="text" style="width: 1000px; height: 60px;"/>
   </p>
-  </p></br>
   <p>
-    <input type="submit" value= "Save" />
+    <input type="submit" value= "Save" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
 </form>
+<a href="/blog/">List of Blogs</a></br>
+<a href="/index"> Home Page</a>
+</body>
+</html>

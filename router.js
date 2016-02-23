@@ -1,4 +1,5 @@
 // The routeMap we will be using, intialized as empty
+var fs = require('fs');
 var routeMap = {
   get: [],
   post: [],
@@ -66,6 +67,8 @@ function addResource(resource, controller) {
   // DEFINED in the controller object, so we test for
   // each method's existence
   // Add the CREATE functions (new & create)
+  if(controller.homepage) addRoute('/' + resource + '/', 'get', controller.homepage);
+  if(controller.homepage) addRoute('/' + resource + '/index', 'get', controller.homepage);
   if(controller.new) addRoute('/' + resource + '/new', 'get', controller.new);
   if(controller.create) addRoute('/' + resource, 'post', controller.create);
   // Add the READ functions (index & show)
@@ -113,6 +116,12 @@ function route(request, response) {
   // If we reach this point in our program execution, it means
   // that there was no match for our route.  Respond with a 404.
   response.writeHead(404, {'Content-Type':'text/html'});
+  if(request.url == " " || request.url == "/" || request.url == "/index.html" || request.url == "/index" )
+  {
+    var data = fs.readFileSync('./templates/blog/homepage.html', {encoding: "utf-8"});
+    response.end(data);
+  }
+  else
   response.end("<h1>Resource Not Found</h1>");
 }
 

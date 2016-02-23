@@ -1,6 +1,22 @@
+<html>
+<head>
+	<style type= "text/css">
+	  h1{ color: yellow;}
+	  body{ background-color: black;}
+	  p{color: #ffcc00; font-size: 15px;}
+	  a{color: #ffcc00; font-size: 18px;}
+	  a:hover {color: red; font-size: 50px;}
+  	</style>
+</head>
+
+<body>
+<fieldset>
 <% content.title = "Blog List" %>
 <h1>List of Blogs</h1>
 <ul>
   <%= partial('blog/_blog', params.blog); %>
 </ul>
 <a href="/blog/new">Add Blog</a>
+</fieldset>
+</body>
+</html>
