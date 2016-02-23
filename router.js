@@ -4,6 +4,7 @@ var routeMap = {
   post: [],
   put: [],
   patch: [],
+  load: [],
   delete: []
 };
 
@@ -76,6 +77,8 @@ function addResource(resource, controller) {
   // Add teh DESTROY functions (destroy)
   if(controller.destroy) addRoute('/' + resource + '/:id', 'delete', controller.destroy);
   if(controller.destroy) addRoute('/' + resource + '/:id/delete', 'get', controller.destroy);
+  if(controller.load) addRoute('/' + resource + '/:id', 'load', controller.load);
+  if(controller.load) addRoute('/' + resource + '/:id/load', 'get', controller.load);
 }
 
 // Routes a request to the matching callback function
@@ -103,6 +106,7 @@ function route(request, response) {
       // on our request, response, and params objects. Also,
       // use *call()* to pass on the 'this' context, which is
       // custom-populated by http.Server
+      console.log(params);
       return routeMap[verb][i].callback.call(this, request, response, params);
     }
   }

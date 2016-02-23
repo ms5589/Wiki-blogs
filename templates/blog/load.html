@@ -1,3 +1,10 @@
-<h1>
-	<%= params.body %>
-</h1>
+<article>
+
+<% content.title = "Blog", params.id %>
+
+	<%=params.title %> </br>
+  	<%=params.body %> </br>
+
+</article>
+
+<a href="/blog/new">Add Blog</a>

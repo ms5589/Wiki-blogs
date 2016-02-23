@@ -22,10 +22,15 @@ var blog = {
     res.end(view.render('blog/new'));
   },
 
-  load: function(req, res) {
-    res.writeHead(200, {"Content-Type":"text/html"});
-    res.end(view.render('blog/load'));
+  load: function(req, res, params) {
+
+    //console.log("paramId in load method: ", params.id);
+    db.run('SELECT body from Post where postId=?', params.id);
+    blog.load(req,res);
+    //res.writeHead(200, {"Content-Type":"text/html"});
+    //res.end(view.render('blog/load'));
   },
+
 
   create: function(req, res) {
     var form = new formidable.IncomingForm();

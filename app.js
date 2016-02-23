@@ -1,7 +1,8 @@
+const PORT = 9090;
 var http = require('http'),
 	router = require('./router'),
     db = require('./db'),
-    blog = require('./blog'),
+    blog = require('./controllers/blog'),
     view = require('./view');
 
 
@@ -9,8 +10,12 @@ var http = require('http'),
 router.addRoute('/blog', 'GET', blog.index);
 router.addRoute('/blog/new', 'GET', blog.new);
 router.addRoute('/blog', 'POST', blog.create);
-router.addResource('blog', require('./controllers/blog'));
+router.addRoute('/blog/:id/load', 'GET', blog.load);
+//router.addResource('blog', require('./controllers/blog'));
 
 // Launching the server
-new http.Server(router.route).listen(9090);
-console.log("Go to Browser");
+new http.Server(router.route).listen(PORT);
+console.log("Hosting at PORT: ",PORT);
+ 
+ // select * from Post INNER JOIN comments ON Post.postId = comments.postId where postId=?
+ //select post.title  AS title, Post.body as body

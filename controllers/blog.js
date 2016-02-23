@@ -5,7 +5,7 @@ var view = require('../view'),
 // This should have methods for all the RESTful actions
 var blog = {
   index: function(req, res) {
-console.log(view);
+  console.log(view);
     var blog = db.all('SELECT * FROM Post', function(err, blog){
       if(err) {
         res.writeHead(500, {"Content-Type":"text/html"});
@@ -20,6 +20,23 @@ console.log(view);
   new: function(req, res) {
     res.writeHead(200, {"Content-Type":"text/html"});
     res.end(view.render('blog/new'));
+  },
+
+  load: function(req, res, params) {
+
+    console.log("paramId in load method: ", params.id);
+    db.get('SELECT * from Post where postId=?', params.id, function(err, post){
+       if(err)
+        {
+          console.log(err);
+          res.writeHead(500, {"Content-Type":"text/html"});
+          res.end("Server Error!");
+        }
+        res.writeHead(200, {"Content-Type":"text/html"});
+        res.end(view.render('blog/load',post));
+    });
+    //blog.load(req,res);
+   
   },
 
   create: function(req, res) {
