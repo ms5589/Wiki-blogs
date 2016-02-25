@@ -11,25 +11,99 @@
 </head>
 <body>
   <% content.title = "Create a Blog" %>
-  <form action="/blog" method="POST">
+  <fieldset><form action="/blog" method="POST">
   <p>
     <label for="title">Title:</label></br>
-    <input name="title" type="text" style="width: 1000px; height: 40px;"/>
+    <input name="title" type="text" style="font-size: 16px; width: 1000px; height: 40px;"/>
   </p>
   <p>
     <label for="body">Write here:</label></br>
-    <input name="blog" type="text" style="width: 1000px; height: 200px;"/>
-  </p>
-  <p>
-    <label for="comment">Add Comments here:</label></br>
-    <input name="comment" type="text" style="width: 1000px; height: 60px;"/>
+    <input type="text" id="body" onkeyup="myFunction()" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/>
   </p>
   <p>
     <input type="submit" value= "Save" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
+
 </form>
 <a href="/blog/">List of Blogs</a></br>
-<a href="/index"> Home Page</a></br> 
-<h4>yo i am just going to be in black color <br> so no one can see me </h4>
+<a href="/index"> Home Page</a>
+<h4> i am just going to be in background color so no one can see me </h4></fieldset>
+<script>
+//changeColor();
+//Save.disable = true;
+
+function myFunction()
+{
+  var text = document.getElementById("body");
+  var keywords = [ ];
+//  alert(keywords);
+  
+  //text.value = text.value.toLowerCase();
+
+   if(findWord(body.value) == "true")
+   {
+      text.style.backgroundColor = "white"; 
+      keywords =  findTarget(body.value);
+      for(var p =0; p< keywords.length;p++)
+      text  = keywords[p].fontcolor("red");
+   }
+   else
+   document.getElementById("body").style.backgroundColor = "yellow";
+}
+
+function findWord(word)
+{
+  //alert(word);
+ var sn = word;
+ var word = sn.split(" ");
+ var flag = "init";
+ var targets= [ ];
+
+ var words = ["string", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
+    //alert(word[0]); if(words[0]==word[1]) alert(words[8]);
+
+ for(var i=0; i<word.length; i++)
+ { 
+   for(var j=0; j<words.length; j++)
+   {
+     if(words[j]==word[i])
+     {
+       flag = "true";
+       //targets.push[word][j];
+     }
+   }
+  }
+  return flag;
+}
+
+function findTarget(word)
+{
+  //alert(word);
+ var sn = word;
+ var word = sn.split(" ");
+ var flag = "init";
+ var targets= [ ];
+
+ var words = ["string", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
+    //alert(word[0]); if(words[0]==word[1]) alert(words[8]);
+
+ for(var i=0; i<word.length; i++)
+ { 
+   for(var j=0; j<words.length; j++)
+   {
+     if(words[j]==word[i])
+     {
+       flag = "true";
+       targets.push(word[i]);
+       //alert(targets);
+     }
+   }
+  }
+  return targets;
+}
+
+</script>
 </body>
+
+
 </html>

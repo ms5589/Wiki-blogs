@@ -72,6 +72,7 @@ function addResource(resource, controller) {
   if(controller.new) addRoute('/' + resource + '/new', 'get', controller.new);
   if(controller.create) addRoute('/' + resource, 'post', controller.create);
   // Add the READ functions (index & show)
+  
   if(controller.index) addRoute('/' + resource, 'get', controller.index);
   if(controller.show) addRoute('/' + resource + '/:id', controller.show);
   // Add the UPDATE functions (edit & update)
@@ -80,6 +81,8 @@ function addResource(resource, controller) {
   // Add teh DESTROY functions (destroy)
   if(controller.destroy) addRoute('/' + resource + '/:id', 'delete', controller.destroy);
   if(controller.destroy) addRoute('/' + resource + '/:id/delete', 'get', controller.destroy);
+  if(controller.add) addRoute('/' + resource + '/:id', 'load', controller.add);
+  if(controller.add) addRoute('/' + resource + '/:id/load', 'get', controller.add);
   if(controller.load) addRoute('/' + resource + '/:id', 'load', controller.load);
   if(controller.load) addRoute('/' + resource + '/:id/load', 'get', controller.load);
 }
@@ -110,7 +113,7 @@ function route(request, response) {
       // use *call()* to pass on the 'this' context, which is
       // custom-populated by http.Server
       console.log(params);
-      return routeMap[verb][i].callback.call(this, request, response, params);
+      return routeMap[verb][i].callback(request, response, params);
     }
   }
   // If we reach this point in our program execution, it means
@@ -122,7 +125,7 @@ function route(request, response) {
     response.end(data);
   }
   else
-  response.end("<h1>Resource Not Found</h1>");
+  response.end("<h1>Resource Not Found!</h1>");
 }
 
 module.exports = exports = {

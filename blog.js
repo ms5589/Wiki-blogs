@@ -1,5 +1,6 @@
 var view = require('./view'),
-    db = require('./db');
+    db = require('./db'),
+    formidable = require('formidable');
 
 // A controller for the Blog resource
 // This should have methods for all the RESTful actions
@@ -33,7 +34,7 @@ var blog = {
 
 
   create: function(req, res) {
-    var form = new formidable.IncomingForm();
+    var form = new require('formidable').IncomingForm();
     form.parse(req, function(err, fields, files) {
       db.run('INSERT INTO Post (title, body, comment) values (?,?,?)',
         fields.title,

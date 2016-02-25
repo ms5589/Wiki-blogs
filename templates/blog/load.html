@@ -1,8 +1,8 @@
  <html> 
   <head>
     <style type= "text/css">
-	  article{ color: yellow; font-size: 25px;}
-	  body{ background-color: black;}
+	  article{ color: black; font-size: 25px;}
+	  body{ background-color: white;}
 	  li{color: #ffcc00; font-size: 25px;}
 	  a{color: #ffcc00; font-size: 25px;}
 	  a:hover {color: red; font-size: 50px;}
@@ -15,30 +15,53 @@
 <article>
 
 <% content.title = "Blog", params.id %>
-
-	<%=params.title %>: </br>
+    <%=params.title %>: </br>
   	<%=params.body %> </br>
 
 </article>
 </fieldset>
 </div>
-
-<button type="button" onclick="loadComment()">Preview Comment</button>
-
-<script>
-function loadComment() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementById("demo").innerHTML = "lol";
-    }
-  };
-  xhttp.open("GET", "comments.html", true);
-  xhttp.send();
-}
-</script>
-</br>
+</br><form action="/" method="POST">
+<input name="comment" type="text" value=" Add a Comment here..."style="font-size: 12px; width: 1000px; height: 32px;"/></br></br>
+<button type="button" onclick="loadComment()" style= "font-size: 12px; height: 30px">Preview Comments</button>&nbsp
+<button type="submit" onclick="addComment()" style= "font-size: 12px; height: 30px">Add a Comment</button> </br></br>
+</form>
 <a href="/blog/new">Add a new Blog</a></br>
 <a href="/blog/">List of Blogs</a>
 </body>
+
+<script>
+function addComment(event)
+{
+	//formdata
+	event.preventDefault();
+	var xhttp = new XMLHttpRequest();
+  	xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4) {
+    	alert("I'm from if state", xhttp.responseText);
+        document.getElementById("demo").innerHTML += xhttp.responseText;
+    }  
+  };  
+
+  xhttp.open("POST", "/blog/<%=params.postId%>/add", true);
+  xhttp.send();
+}
+
+function loadComment() {
+
+  var xhttp = new XMLHttpRequest();
+  //alert(xhttp);
+  //document.getElementById("page").innerHTML = xhttp.responseText;
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4) {
+    	//alert("I'm from IF state", xhttp.responseText);
+        document.getElementById("demo").innerHTML += xhttp.responseText;
+    }  
+  };  
+
+  xhttp.open("GET", "/blog/<%=params.postId%>/preview", true);
+  //xhttp.responseType = "document";
+  xhttp.send();
+}
+</script>
 </html>
