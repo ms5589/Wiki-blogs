@@ -2,6 +2,7 @@
 <head>
 <style type= "text/css">
     h1{ color: yellow;}
+    span.show {color:red;}
     body{ background-color: black;}
     p{color: #ffcc00; font-size: 25px;}
     a{color: #ffcc00; font-size: 25px;}
@@ -44,9 +45,10 @@ function myFunction()
    {
       text.style.backgroundColor = "white"; 
       keywords =  findTarget(body.value);
-      for(var p =0; p< keywords.length;p++)
-      text  = keywords[p].fontcolor("red");
+      //for(var x=0; x< keywords.length; x++)
+      //text.value = (text.value).replace(keywords[x], <span id=keywords[x] class= "show">keywords[x]</span>);
    }
+
    else
    document.getElementById("body").style.backgroundColor = "yellow";
 }
@@ -59,7 +61,7 @@ function findWord(word)
  var flag = "init";
  var targets= [ ];
 
- var words = ["string", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
+ var words = ["string", "int ", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
     //alert(word[0]); if(words[0]==word[1]) alert(words[8]);
 
  for(var i=0; i<word.length; i++)
@@ -84,7 +86,7 @@ function findTarget(word)
  var flag = "init";
  var targets= [ ];
 
- var words = ["string", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
+ var words = ["string", "int", "str", "new", "var", "bool", "function", "value", "if", "else", "for", "while", "switch", " document", "null", "return", "public", "private", "eval", "let", "in", "false", "true", "try", "delete", "break", "catch", "const", "length", " "];
     //alert(word[0]); if(words[0]==word[1]) alert(words[8]);
 
  for(var i=0; i<word.length; i++)

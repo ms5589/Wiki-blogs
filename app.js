@@ -12,7 +12,7 @@ router.addRoute('/index', 'POST', blog.homepage);
 router.addRoute('/blog', 'GET', blog.index);
 router.addRoute('/blog/new', 'GET', blog.new);
 router.addRoute('/blog', 'POST', blog.create);
-router.addRoute('/blog/:id/load', 'POST', blog.add);
+router.addRoute('/blog/:id/add', 'POST', blog.add);
 router.addRoute('/blog/:id/load', 'GET', blog.load);
 router.addRoute('/blog/:id/preview', 'GET', blog.preview);
 router.addResource('blog', require('./controllers/blog'));

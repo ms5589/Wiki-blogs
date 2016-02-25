@@ -63,11 +63,12 @@ var blog = {
   
   add: function(req, res) {
     var form = new formidable.IncomingForm();
+    var temp = req.url.split('/')[2]
     form.parse(req, function(err, fields, files) {
-      db.run('INSERT INTO Comment(postid, body) values (?,?)', params.id, fields.comment);
-      console.log("Comment added", params.id);
+      db.run('INSERT INTO Comment(postid, body) values (?,?)', temp, fields.comment);
+      console.log("Comment added", temp);
       blog.index(req, res)
-      console.log("Comment added");
+      //console.log("Comment added");
     });
   },  
 
