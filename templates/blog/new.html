@@ -15,14 +15,12 @@
   <fieldset><form action="/blog" method="POST">
   <p>
     <label for="title">Title:</label></br>
-    <input name="title" type="text" style="font-size: 16px; width: 1000px; height: 40px;"/>
-  </p>
-  <p>
+    <input name="title" type="text" autocomplete="off" style="font-size: 16px; width: 1000px; height: 40px;"/> </br> </br>
+  
     <label for="body">Write here:</label></br>
-    <input type="text" id="body" onkeyup="myFunction()" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/>
-  </p>
-  <p>
-    <input type="submit" value= "Save" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
+    <input name="body" type="text" id="body" onkeyup="myFunction()" autocomplete="off" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/> </br> </br>
+ 
+    <input type="submit" value= "Save" onclick="addPost" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
 
 </form>
@@ -32,6 +30,23 @@
 <script>
 //changeColor();
 //Save.disable = true;
+function addPost()
+{
+  //formdata
+  //alert(event);
+  event.preventDefault();
+  console.log(body.value);
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4) {
+      alert("I'm from if state", xhttp.responseText);
+        document.getElementById("demo").innerHTML += xhttp.responseText;
+    }  
+  };  
+
+  xhttp.open("POST", "/blog", true);
+  xhttp.send();
+}
 
 function myFunction()
 {

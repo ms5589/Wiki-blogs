@@ -74,8 +74,10 @@ var blog = {
 
   create: function(req, res) {
     var form = new formidable.IncomingForm();
+    console.log("I am in create");
     form.parse(req, function(err, fields, files) {
       db.run('INSERT INTO Post(title, body) values (?,?)',fields.title, fields.body);
+      console.log("TITLE: ",fields.title);
       blog.index(req, res)
       console.log("Body of Post added");
     });
@@ -84,6 +86,7 @@ var blog = {
   destroy: function(req, res, params) {
     console.log(params.id);
     db.run('DELETE FROM Post WHERE postId=?', params.id);
+    db.run('DELETE FROM Comment WHERE postid=?', params.id);
     blog.index(req, res);
   }
 }
