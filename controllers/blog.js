@@ -62,20 +62,19 @@ var blog = {
   },
   
   add: function(req, res) {
-    var form = new formidable.IncomingForm();
-    var temp = req.url.split('/')[2]
-    form.parse(req, function(err, fields, files) {
+      var form = new formidable.IncomingForm();
+      var temp = req.url.split('/')[2]
+      form.parse(req, function(err, fields, files) {
       db.run('INSERT INTO Comment(postid, body) values (?,?)', temp, fields.comment);
       console.log("Comment added", temp);
       blog.index(req, res)
-      //console.log("Comment added");
     });
   },  
 
   create: function(req, res) {
-    var form = new formidable.IncomingForm();
-    console.log("I am in create");
-    form.parse(req, function(err, fields, files) {
+      var form = new formidable.IncomingForm();
+      console.log("I am in create");
+      form.parse(req, function(err, fields, files) {
       db.run('INSERT INTO Post(title, body) values (?,?)',fields.title, fields.body);
       console.log("TITLE: ",fields.title);
       blog.index(req, res)
@@ -99,14 +98,17 @@ var blog = {
       });
   },
  
-  change: function(req, res) {
+change: function(req, res) {
     var temp = req.url.split('/')[2];
     var form = new formidable.IncomingForm();
+
     console.log("I am in edit going to post");
+    
     form.parse(req, function(err, fields, files) {
+      console.log("FIELDS", fields);
     db.run('UPDATE Post SET title = ?, body = ? WHERE postId = ?', fields.title, fields.body, temp);
     //db.run('INSERT INTO Post(title, body) values (?,?)',fields.title, fields.body);
-    console.log("TITLE: ",fields.title);
+    console.log("Changing TITLE: ",fields.title);
     blog.index(req, res)
     console.log("Blog edited");
     });

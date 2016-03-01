@@ -10,11 +10,15 @@
   <p>
     <label for="title">Title:</label></br>
     <input name="title" type="text" autocomplete="off" style="font-size: 16px; width: 1000px; height: 40px;"/> </br> </br>
+
   <pre> <code class="language-javascript">
 
     <label for="body">Write here:</label></br>
-    <input name="body" type="text" id="body" onkeyup="myFunction()" autocomplete="off" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/> </br> </br>
+    <input name="body" type="text" id="body" 
+    value="<pre><code class='language-javascript'>Write code here...</code></pre>"
+    onkeyup="myFunction()" autocomplete="off" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/> </br> </br>
  </code> </pre>
+
     <input type="submit" value= "Save" onclick="addPost" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
 
