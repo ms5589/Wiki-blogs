@@ -13,8 +13,12 @@
 <fieldset>
 <li>
   <a method="load" href="/blog/<%= params.postId %>/load"><%=params.title %></a>
-  &nbsp&nbsp&nbsp&nbsp&nbspDelete
-  <a method="delete" href="/blog/<%= params.postId %>/delete">(X)</a>
+  <ul>
+  Edit 
+  <a method="edit" href="/blog/<%= params.postId %>/edit"> -> </a>
+  &nbsp&nbsp&nbsp&nbsp&nbsp
+  Delete
+  <a method="delete" href="/blog/<%= params.postId %>/delete">(X)</a> </ul>
 </li>
 </fieldset>
 </body>

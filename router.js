@@ -71,12 +71,13 @@ function addResource(resource, controller) {
   if(controller.homepage) addRoute('/' + resource + '/index', 'get', controller.homepage);
   if(controller.new) addRoute('/' + resource + '/new', 'get', controller.new);
   if(controller.create) addRoute('/' + resource, 'post', controller.create);
+  if(controller.change) addRoute('/:id/change' + resource, 'post', controller.change);
   // Add the READ functions (index & show)
   
   if(controller.index) addRoute('/' + resource, 'get', controller.index);
   if(controller.show) addRoute('/' + resource + '/:id', controller.show);
   // Add the UPDATE functions (edit & update)
-  if(controller.edit) addroute('/' + resource + '/:id/edit', 'get', controller.edit);
+  if(controller.edit) addRoute('/' + resource + '/:id/edit', 'get', controller.edit);
   if(controller.update) addRoute('/' + resource + '/:id', 'put', controller.update);
   // Add teh DESTROY functions (destroy)
   if(controller.destroy) addRoute('/' + resource + '/:id', 'delete', controller.destroy);

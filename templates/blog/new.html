@@ -1,14 +1,8 @@
 <html>
 <head>
-<style type= "text/css">
-    h1{ color: yellow;}
-    span.show {color:red;}
-    body{ background-color: black;}
-    p{color: #ffcc00; font-size: 25px;}
-    a{color: #ffcc00; font-size: 25px;}
-    a:hover {color: red; font-size: 50px;}
-    h4{color: black;}
-</style>
+
+<link rel ="stylesheet" href="prism.css"/>
+<script src="prism.js"> </script>
 </head>
 <body>
   <% content.title = "Create a Blog" %>
@@ -16,20 +10,24 @@
   <p>
     <label for="title">Title:</label></br>
     <input name="title" type="text" autocomplete="off" style="font-size: 16px; width: 1000px; height: 40px;"/> </br> </br>
-  
+  <pre> <code class="language-javascript">
+
     <label for="body">Write here:</label></br>
     <input name="body" type="text" id="body" onkeyup="myFunction()" autocomplete="off" style= "margin-top:0px; font-size: 23px; width: 1000px; height: 200px;"/> </br> </br>
- 
+ </code> </pre>
     <input type="submit" value= "Save" onclick="addPost" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
+
 
 </form>
 <a href="/blog/">List of Blogs</a></br>
 <a href="/index"> Home Page</a>
-<h4> i am just going to be in background color so no one can see me </h4></fieldset>
+<h4> </h4></fieldset>
+
 <script>
 //changeColor();
 //Save.disable = true;
+
 function addPost()
 {
   //formdata
@@ -60,10 +58,8 @@ function myFunction()
    {
       text.style.backgroundColor = "white"; 
       keywords =  findTarget(body.value);
-      //for(var x=0; x< keywords.length; x++)
-      //text.value = (text.value).replace(keywords[x], <span id=keywords[x] class= "show">keywords[x]</span>);
    }
-
+   //alert(keywords);
    else
    document.getElementById("body").style.backgroundColor = "yellow";
 }

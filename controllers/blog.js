@@ -83,7 +83,37 @@ var blog = {
     });
   },
 
-  destroy: function(req, res, params) {
+  edit: function(req, res, params) {
+
+    var temp = req.url.split('/')[2];
+    console.log("paramId in edit method: ", params.id);
+    db.get('SELECT * from Post where postId=?', params.id, function(err, post){
+       if(err)
+        {
+          console.log(err);
+          res.writeHead(500, {"Content-Type":"text/html"});
+          res.end("Server Error!");
+        }
+        res.writeHead(200, {"Content-Type":"text/html"});
+        res.end(view.render('blog/edit',post));
+      });
+  },
+ 
+  change: function(req, res) {
+    var temp = req.url.split('/')[2];
+    var form = new formidable.IncomingForm();
+    console.log("I am in edit going to post");
+    form.parse(req, function(err, fields, files) {
+    db.run('UPDATE Post SET title = ?, body = ? WHERE postId = ?', fields.title, fields.body, temp);
+    //db.run('INSERT INTO Post(title, body) values (?,?)',fields.title, fields.body);
+    console.log("TITLE: ",fields.title);
+    blog.index(req, res)
+    console.log("Blog edited");
+    });
+  },
+
+
+destroy: function(req, res, params) {
     console.log(params.id);
     db.run('DELETE FROM Post WHERE postId=?', params.id);
     db.run('DELETE FROM Comment WHERE postid=?', params.id);

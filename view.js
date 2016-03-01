@@ -13,6 +13,7 @@ function cacheDirectory(dir) {
     cacheFile(dir + '/' + file);
   });
 }
+
 function cacheTemplates() {
   var dirs = fs.readdirSync('templates/');
   console.log(dirs);
