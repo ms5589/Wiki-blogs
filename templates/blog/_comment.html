@@ -1,9 +1,18 @@
 <style type= "text/css">
 	  h1{ color: #1e1e2f; font-size: 20px;}
-	  h2{ color: purple; font-size: 18px;}	  
+	  h2{ color: black; font-size: 10px;}
+	  h3{ color: purple; font-size:  18px;}
+	  a:hover {color: red;}  
 </style>
 <li>
-<h2>
-<%=params.body%> <%=params.postId%>
-</h2>
+<h3>
+<%=params.body%>&nbsp&nbsp&nbsp&nbsp&nbsp
+<a method="delete" href="/blog/<%= params.comntId%>/del"> x</a>
+</h3>
 </li>
+<script type="text/javascript">
+
+function remove(){
+	alert("Remove");
+}
+</script>

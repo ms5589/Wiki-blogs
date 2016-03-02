@@ -1,24 +1,27 @@
 <html>
 <head>
-	<style type= "text/css">
-	  h1{ color: yellow;}
-	  body{ background-color: black;}
-	  li{color: #ffcc00; font-size: 25px;}
-	  a{color: #ffcc00; font-size: 25px;}
-	  a:hover {color: #99ff66; font-size: 50px;}
-  	</style>
+  	 <style type= "text/css">
+	  h1{ color: #6600cc;}
+	  body{ background-color: #e0e0eb;}
+	  p{color: #ffcc00; font-size: 25px;}
+	  a{color: #46466d; font-size: 25px;}
+	  a:hover {color: #5c0099; font-size: 35px;}
+     </style>
+
 </head>
 
 <body>
 <fieldset>
 <li>
-  <a method="load" href="/blog/<%= params.postId %>/load"><%=params.title %></a>
-  <ul>
+  
+  <a method="load" href="/blog/<%= params.postId %>/load" ><%=params.title %></a></br>
+  
   Edit 
-  <a method="edit" href="/blog/<%= params.postId %>/edit"> +</a>
-  &nbsp&nbsp&nbsp&nbsp&nbsp
+  <a method="edit" href="/blog/<%= params.postId %>/edit"> [/]</a></br>
+  
   Delete
-  <a method="delete" href="/blog/<%= params.postId %>/delete">(X)</a> </ul>
+  <a method="delete" href="/blog/<%= params.postId %>/delete">[x]</a>
+
 </li>
 </fieldset>
 </body>

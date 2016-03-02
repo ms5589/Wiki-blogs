@@ -1,12 +1,13 @@
 <html> 
   <head>
-    <style type= "text/css">
-    article{ color: #ffcc00; font-size: 25px;}
-    body{ background-color: black;}
-    li{color: #ffcc00; font-size: 25px;}
-    a{color: #ffcc00; font-size: 25px;}
-    a:hover {color: #99ff66; font-size: 50px;}
-    </style>
+     <style type= "text/css">
+    h1{ color: yellow;}
+    body{ background-color: #e0e0eb;}
+    p{color: #ffcc00; font-size: 25px;}
+    a{color: #46466d; font-size: 25px;}
+    a:hover {color: #5c0099; font-size: 35px;}
+     </style>
+
   </head>
 <body onload="readData()">
 <div id="demo">
@@ -15,14 +16,16 @@
 <link rel ="stylesheet" href="/prism.css"/>
 <script src="/prism.js"> </script>
 <form id= "form" action="/blog/<%=params.postId%>/change" method="POST">
-
+<label for="title" font-size="46px">Title:</label></br>
 <input name="title" id="title" type="text" autocomplete="off" style="font-size: 18px; width: 1000px; height: 32px;"/> </br></br>
+<label for="body" font-size="46px">Body:</label></br>
 <input name="body" id="body" type="text"  autocomplete="off" style="font-size: 18px; width: 1000px; height: 104px;"/> </br></br>
 
 <button type="submit" onclick="save" style= "font-size: 12px; height: 30px" >Save changes</button> </br></br>
 </form> </br>
-<a href="/blog/new">Add a new Blog</a></br>
-<a href="/blog/">List of Blogs</a>
+<fieldset>
+<a href="/blog/new">Add a new Blog</a>&nbsp&nbsp&nbsp&nbsp
+<a href="/blog/">List of Blogs</a> </fieldset>
 
 <script>
 

@@ -6,6 +6,7 @@ var routeMap = {
   put: [],
   patch: [],
   load: [],
+  del: [],
   delete: []
 };
 
@@ -82,8 +83,13 @@ function addResource(resource, controller) {
   // Add teh DESTROY functions (destroy)
   if(controller.destroy) addRoute('/' + resource + '/:id', 'delete', controller.destroy);
   if(controller.destroy) addRoute('/' + resource + '/:id/delete', 'get', controller.destroy);
+
+  if(controller.destroy) addRoute('/' + resource + '/:id', 'del', controller.delCmt);
+  if(controller.destroy) addRoute('/' + resource + '/:id/del', 'get', controller.delCmt);
+  
   if(controller.add) addRoute('/' + resource + '/:id', 'load', controller.add);
   if(controller.add) addRoute('/' + resource + '/:id/load', 'get', controller.add);
+
   if(controller.load) addRoute('/' + resource + '/:id', 'load', controller.load);
   if(controller.load) addRoute('/' + resource + '/:id/load', 'get', controller.load);
 }

@@ -2,7 +2,7 @@ var view = require('../view'),
     db = require('../db');
     formidable = require('formidable');
 
-// A controller for the equipment resource
+// A controller for the blog resource
 // This should have methods for all the RESTful actions
 var blog = {
   
@@ -18,11 +18,6 @@ var blog = {
       res.end(view.render('blog/index', {blog: blog}));
     });
   },
-
-  /*homepage: function(req, res){
-    res.writeHead(200, {"Content-Type":"text/html"});
-    res.end(view.render('/index'));
-  }, */
   
   new: function(req, res) {
     res.writeHead(200, {"Content-Type":"text/html"});
@@ -32,7 +27,7 @@ var blog = {
   preview: function(req, res, params) {
 
     console.log("ParamId in preview method: ", params.id);
-    db.all('SELECT body from Comment where postid=?', params.id, function(err, post){
+    db.all('SELECT * from Comment where postid=?', params.id, function(err, post){
        if(err)
         {
           console.log(err);
@@ -97,6 +92,14 @@ var blog = {
         res.end(view.render('blog/edit',post));
       });
   },
+
+ delCmt: function(req, res, params) {
+    var temp = req.url.split('/')[2];
+    console.log("delete comment", params.id);
+    //db.run('DELETE FROM Post WHERE postId=?', params.id);
+    db.run('DELETE FROM Comment WHERE comntId=?', params.id);
+    blog.index(req, res);
+  },
  
 change: function(req, res) {
     var temp = req.url.split('/')[2];
@@ -113,7 +116,6 @@ change: function(req, res) {
     console.log("Blog edited");
     });
   },
-
 
 destroy: function(req, res, params) {
     console.log(params.id);

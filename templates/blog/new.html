@@ -1,13 +1,13 @@
 <html>
 <head>
-    <style type= "text/css">
-    article{ color: #ffcc00; font-size: 25px;}
-    body{ background-color: black;}
-    li{color: #ffcc00; font-size: 25px;}
-    a{color: #ffcc00; font-size: 25px;}
-    a:hover {color: #99ff66; font-size: 50px;}
-    #form label{font-size:  25px; color: white}
-    </style>
+     <style type= "text/css">
+    h1{ color: yellow;}
+    body{ background-color: #e0e0eb;}
+    p{color: #ffcc00; font-size: 25px;}
+    a{color: #46466d; font-size: 25px;}
+    a:hover {color: #5c0099; font-size: 50px;}
+     </style>
+
 <link rel ="stylesheet" href="prism.css"/>
 <script src="prism.js"> </script>
 </head>
@@ -15,7 +15,7 @@
   <% content.title = "Create a Blog" %>
   <fieldset><form action="/blog" id="form" method="POST">
   <p>
-    <label for="title" font-size="26px"}>Title:</label></br>
+    <label for="title" font-size="26px" color="Black">Title:</label></br>
     <input name="title" type="text" autocomplete="off" style="font-size: 16px; width: 1000px; height: 40px;"/></br> </br>
 
     <pre> <code class="language-javascript">
@@ -29,10 +29,11 @@
     <input type="submit" value= "Save" onclick="addPost" style="width: 100px; color:black; background-color: #ffffcc;font-size: 25px;"/>
   </p>
 
-
 </form>
-<a href="/blog/">List of Blogs</a></br>
-<a href="/index"> Home Page</a>
+</fieldset>
+<fieldset>
+<a href="/blog/">List of Blogs</a>&nbsp&nbsp&nbsp&nbsp
+<a href="/index"> Home Page</a></br>
 <h4> </h4></fieldset>
 
 <script>
@@ -128,6 +129,4 @@ function findTarget(word)
 
 </script>
 </body>
-
-
 </html>

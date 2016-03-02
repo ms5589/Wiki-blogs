@@ -1,7 +1,8 @@
 <html>
 <head>
 	<style type= "text/css">
-	  h1{ color: yellow;}
+	  h1{ color: #6600cc;}
+	  h4{color: #e0e0eb;}
 	  body{ background-color: black;}
 	  p{color: #ffcc00; font-size: 15px;}
 	  a{color: #ffcc00; font-size: 18px;}
@@ -13,10 +14,12 @@
 <fieldset>
 <% content.title = "Blog List" %>
 <h1>List of Blogs</h1>
-<ul>
+<li>
   <%= partial('blog/_blog', params.blog); %>
-</ul>
-<a href="/blog/new">Add Blog</a>
+</li></br> </fieldset>
+<fieldset>
+<a href="/blog/new">Add Blog</a>&nbsp&nbsp&nbsp&nbsp
+<a href="/index"> Home Page</a>
 </fieldset>
 </body>
 </html>
