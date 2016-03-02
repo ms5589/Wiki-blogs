@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "This application will allow its users to create/edit/delete the blog posts. User can also add comments to posts and see it. User can write the code in JavaSript while writing their posts.",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagar5589/server_DB.git"
+  },
+  "keywords": [
+    "blog",
+    "posts",
+    "cis",
+    "javascript",
+    "ajax",
+    "css",
+    "html",
+    "database"
+  ],
+  "author": "Sagar Mehta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagar5589/server_DB/issues"
+  },
+  "homepage": "https://github.com/sagar5589/server_DB#readme"
+}

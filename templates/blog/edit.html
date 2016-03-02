@@ -1,6 +1,13 @@
 <html> 
-
-
+  <head>
+    <style type= "text/css">
+    article{ color: #ffcc00; font-size: 25px;}
+    body{ background-color: black;}
+    li{color: #ffcc00; font-size: 25px;}
+    a{color: #ffcc00; font-size: 25px;}
+    a:hover {color: #99ff66; font-size: 50px;}
+    </style>
+  </head>
 <body onload="readData()">
 <div id="demo">
 <% content.title = "Blog", params.id %>
@@ -9,8 +16,8 @@
 <script src="/prism.js"> </script>
 <form id= "form" action="/blog/<%=params.postId%>/change" method="POST">
 
-<input name="title" id="title" type="text" autocomplete="off" style="font-size: 12px; width: 1000px; height: 32px;"/> </br></br>
-<input name="body" id="body" type="text"  autocomplete="off" style="font-size: 12px; width: 1000px; height: 104px;"/> </br></br>
+<input name="title" id="title" type="text" autocomplete="off" style="font-size: 18px; width: 1000px; height: 32px;"/> </br></br>
+<input name="body" id="body" type="text"  autocomplete="off" style="font-size: 18px; width: 1000px; height: 104px;"/> </br></br>
 
 <button type="submit" onclick="save" style= "font-size: 12px; height: 30px" >Save changes</button> </br></br>
 </form> </br>
@@ -20,10 +27,11 @@
 <script>
 
 function readData(){
-  //alert("im here");
- document.getElementById("title").value = "<%=params.title.replace('"', '\"')  %>";
- document.getElementById("body").value =  "<%=params.body.replace('"', '\"') %>";
- }
+  
+ document.getElementById("title").value = "<%=params.title.replace(/"/g, "'") %>";
+ document.getElementById("body").value  = "<%=params.body.replace(/"/g, "'") %>";
+
+}
 
 function save(event){
 
